@@ -14,7 +14,7 @@ class RootComponent extends Component {
             user: null,
             readyCount: 0,
             message: null,
-            reloadOnClose: false
+            displayReloadCloseText: false
         };
 
         this.showMessage = this.showMessage.bind(this);
@@ -42,9 +42,9 @@ class RootComponent extends Component {
             .catch(this.onRequestFailed);
     }
 
-    showMessage(title, content, reloadOnClose) {
+    showMessage(title, content, displayReloadCloseText) {
         this.setState({
-            reloadOnClose: reloadOnClose,
+            displayReloadCloseText: displayReloadCloseText,
             message: {
                 title: title,
                 content: content
@@ -53,14 +53,11 @@ class RootComponent extends Component {
     }
 
     closeMessage() {
-        let newState = {message: null};
-
-        if (this.state.reloadOnClose) {
-            newState.readyCount = 0;
-            this.componentDidMount();
-        }
-
-        this.setState(newState);
+        this.setState({
+            message: null,
+            readyCount: 0
+        });
+        this.componentDidMount();
     }
 
     onRequestFailed() {
@@ -70,7 +67,7 @@ class RootComponent extends Component {
 
     render() {
         if (this.state.message !== null) {
-            let buttonText = this.state.reloadOnClose ? 'Ladda om sidan' : 'Stäng';
+            let buttonText = this.state.displayReloadCloseText ? 'Ladda om sidan' : 'Stäng';
 
             return (
                 <CenteredLayout>
