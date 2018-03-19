@@ -14,9 +14,15 @@ class ActiveVoteContainer extends Component {
         } else {
             let shownVote = this.props.votes[0];
 
-            return (
-                <VoteComponent vote={shownVote} onMessage={this.props.onMessage}/>
-            )
+            if (shownVote.has_voted) {
+                return (
+                    <p className="text-center text-secondary">Du har redan röstat i den nuvarande omröstningen.</p>
+                )
+            } else {
+                return (
+                    <VoteComponent vote={shownVote} onMessage={this.props.onMessage}/>
+                )
+            }
         }
     }
 }
