@@ -32,7 +32,7 @@ class RootComponent extends Component {
             }.bind(this))
             .catch(this.onRequestFailed);
 
-        Endpoint.get('/voting/votes')
+        Endpoint.get('/voting/votes?current=true')
             .then(function (json) {
                 this.setState({
                     votes: json,
