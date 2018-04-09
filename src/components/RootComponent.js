@@ -23,7 +23,7 @@ class RootComponent extends Component {
     }
 
     componentDidMount() {
-        Endpoint.get('/account/user/me')
+        Endpoint.get('/account/user/me/')
             .then(function (json) {
                 this.setState({
                     user: json,
@@ -32,7 +32,7 @@ class RootComponent extends Component {
             }.bind(this))
             .catch(this.onRequestFailed);
 
-        Endpoint.get('/voting/votes?current=true')
+        Endpoint.get('/voting/votes/?current=true')
             .then(function (json) {
                 this.setState({
                     votes: json,
