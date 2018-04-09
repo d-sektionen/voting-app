@@ -2,6 +2,7 @@
   "name": "dsek-vote-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "js-cookie": "^2.2.0",
     "query-string": "^5.1.0",
