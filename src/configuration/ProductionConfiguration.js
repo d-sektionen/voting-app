@@ -1,5 +1,5 @@
 class ProductionConfiguration {
-    static SERVER_URL = 'https://dsek-api-dev.herokuapp.com';
+    static SERVER_URL = 'https://api.d-sektionen.se';
 }
 
 export default ProductionConfiguration;
